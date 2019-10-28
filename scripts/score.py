@@ -18,8 +18,8 @@ def init():
         print("Model loaded from disk.")
         print(model.summary())
 
-        inputs_dc = ModelDataCollector("model_telemetry", identifier="inputs")
-        prediction_dc = ModelDataCollector("model_telemetry", identifier="predictions", feature_names=["prediction"])
+        #inputs_dc = ModelDataCollector("model_telemetry", identifier="inputs")
+        #prediction_dc = ModelDataCollector("model_telemetry", identifier="predictions", feature_names=["prediction"])
     except Exception as e:
         print(e)
         
@@ -33,8 +33,8 @@ def run(raw_data):
         inputs = np.array(inputs).reshape(-1, 100)
         results = model.predict(inputs).reshape(-1)
 
-        inputs_dc.collect(inputs) #this call is saving our input data into Azure Blob
-        prediction_dc.collect(results) #this call is saving our output data into Azure Blob
+        #inputs_dc.collect(inputs) #this call is saving our input data into Azure Blob
+        #prediction_dc.collect(results) #this call is saving our output data into Azure Blob
 
         print("Prediction created " + time.strftime("%H:%M:%S"))
         
